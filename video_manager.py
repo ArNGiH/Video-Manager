@@ -9,7 +9,7 @@ def load_data():
         return []
     
 
-def save_data_helper():
+def save_data_helper(videos):
     with open("streamer.txt", "w") as file:
         json.dump(videos, file)        
     
@@ -20,9 +20,9 @@ def list_all_videos(videos):
         print(f"{index}.")
 
 def add_video(videos):
-    name=input("Enter video name")
-    time=input("Enter video duration")
-    videos.append({'name':name}, {'time':time})
+    name = input("Enter video name: ")
+    time = input("Enter video duration: ")
+    videos.append({'name': name, 'time': time})
     save_data_helper(videos)
 
 
@@ -38,7 +38,7 @@ def main():
     videos=load_data()
     while(True):
         print("\n Video Manager | Choose an option")
-        print("1. List a favorite video")
+        print("1. List all videos")
         print("2. Add a video")
         print("3. Update video details")
         print("4. Delete a video")
