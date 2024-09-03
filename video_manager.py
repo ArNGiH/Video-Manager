@@ -16,8 +16,13 @@ def save_data_helper(videos):
 
 
 def list_all_videos(videos):
-    for index,video in enumerate(videos,start=1):
-        print(f"{index}.")
+    print("\n")
+    print('*'*70)
+    for index, video in enumerate(videos, start=1):
+        print(f"{index} . Name : {video['name']} , Duration: {video['time']}")
+
+    
+    print('*'*70)
 
 def add_video(videos):
     name = input("Enter video name: ")
@@ -29,7 +34,15 @@ def add_video(videos):
 
 
 def update_video(videos):
-    pass
+    list_all_videos(videos)
+    index=int(input("Enter the video number to update"))
+    if 1<=index <= len(videos):
+        name=input("Enter the new video name: ")
+        time=input("Enter the new video duration: ")
+        videos[index-1]={'name': name, 'time': time}
+        save_data_helper(videos)
+    else:
+        print("Invalid video number. Please try again.")
 
 def delete_video(videos):
     pass
@@ -44,7 +57,7 @@ def main():
         print("4. Delete a video")
         print("5. Exit")
         choice=input("Enter your choice")
-        print(videos)
+        
 
 
         match choice:
